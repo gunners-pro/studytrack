@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: studytrack
+      POSTGRES_USER: studytrack
+      POSTGRES_PASSWORD: studytrack
+    command:
+      - "postgres"
+      - "-c"
+      - "shared_buffers=256MB"
+      - "-c"
+      - "work_mem=8MB"
+      - "-c"
+      - "maintenance_work_mem=128MB"
+      - "-c"
+      - "effective_cache_size=768MB"
+      - "-c"
+      - "max_connections=50"
+    mem_limit: 1g
+    restart: unless-stopped
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 8080:8080
