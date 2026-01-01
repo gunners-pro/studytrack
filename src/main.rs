@@ -1,6 +1,8 @@
 mod app;
 mod config;
 mod http;
+mod models;
+mod services;
 mod state;
 
 #[tokio::main]
